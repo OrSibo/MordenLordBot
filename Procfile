@@ -1,1 +1,1 @@
-MordenLord: python3 main.py
+Emilia: python3 main.py
