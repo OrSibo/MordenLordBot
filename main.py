@@ -14,7 +14,7 @@ MONGO_URL = os.environ.get("MONGO_URL", None)
 
 
 bot = Client(
-    "MordenLordBot" ,
+    "EmiliaBot" ,
     api_id = API_ID,
     api_hash = API_HASH ,
     bot_token = BOT_TOKEN
@@ -32,7 +32,7 @@ async def is_admins(chat_id: int):
 
 @bot.on_message(filters.command("start"))
 async def start(client, message):
-        await message.reply_text("Hi! My name is MordenLord. I'm an Artificial Intelligence\n /chatbot - [on|off]")
+        await message.reply_text("Hi! My name is Emilia. I'm an Artificial Intelligence\n /chatbot - [on|off]")
 
 
 @bot.on_message(
@@ -40,7 +40,7 @@ async def start(client, message):
     & ~filters.private)
 async def chatbotofd(client, message):
     emiliadb = MongoClient(MONGO_URL)    
-    emilia = emiliadb["MordenLordDb"]["MordenLord"]     
+    emilia = emiliadb["EmiliaDb"]["Emilia"]     
     if message.from_user:
         user = message.from_user.id
         chat_id = message.chat.id
@@ -63,7 +63,7 @@ async def chatbotofd(client, message):
     & ~filters.private)
 async def chatboton(client, message):
     emiliadb = MongoClient(MONGO_URL)    
-    emilia = emiliadb["MordenLordDb"]["MordenLord"]     
+    emilia = emiliadb["EmiliaDb"]["Emilia"]     
     if message.from_user:
         user = message.from_user.id
         chat_id = message.chat.id
@@ -103,7 +103,7 @@ async def emiliaai(client: Client, message: Message):
 
    if not message.reply_to_message:
        emiliadb = MongoClient(MONGO_URL)
-       emilia = emiliadb["MordenLordDb"]["MordenLord"] 
+       emilia = emiliadb["EmiliaDb"]["Emilia"] 
        is_emilia = emilia.find_one({"chat_id": message.chat.id})
        if not is_emilia:
            await bot.send_chat_action(message.chat.id, "typing")
@@ -123,7 +123,7 @@ async def emiliaai(client: Client, message: Message):
    
    if message.reply_to_message:  
        emiliadb = MongoClient(MONGO_URL)
-       emilia = emiliadb["MordenLordDb"]["MordenLord"] 
+       emilia = emiliadb["EmiliaDb"]["Emilia"] 
        is_emilia = emilia.find_one({"chat_id": message.chat.id})    
        getme = await bot.get_me()
        bot_id = getme.id                             
@@ -169,7 +169,7 @@ async def emiliastickerai(client: Client, message: Message):
 
    if not message.reply_to_message:
        emiliadb = MongoClient(MONGO_URL)
-       emilia = emiliadb["MordenLordDb"]["MordenLord"] 
+       emilia = emiliadb["EmiliaDb"]["Emilia"] 
        is_emilia = emilia.find_one({"chat_id": message.chat.id})
        if not is_emilia:
            await bot.send_chat_action(message.chat.id, "typing")
@@ -189,7 +189,7 @@ async def emiliastickerai(client: Client, message: Message):
    
    if message.reply_to_message:
        emiliadb = MongoClient(MONGO_URL)
-       emilia = emiliadb["MordenLordDb"]["MordenLord"] 
+       emilia = emiliadb["EmiliaDb"]["Emilia"] 
        is_emilia = emilia.find_one({"chat_id": message.chat.id})
        getme = await bot.get_me()
        bot_id = getme.id
